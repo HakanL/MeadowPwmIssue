@@ -33,6 +33,8 @@ namespace MeadowPwmIssue
         {
             Console.WriteLine("Initialize hardware...");
 
+            // Note that pin D03 and D04 are on the same PWM Timer Group, but according to the documentation that should be fine
+            // as long as you have the same frequency, but the duty cycle can be different.
             pwmLightA = Device.CreatePwmPort(Device.Pins.D04, frequency: 1000);
             lightA = new PwmLed(pwmLightA, TypicalForwardVoltage.ResistorLimited);
 
